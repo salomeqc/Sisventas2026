@@ -42,3 +42,4 @@
     </div>
 </div>
 <?php require __DIR__ . '/../../layouts/footer.php'; ?>
+

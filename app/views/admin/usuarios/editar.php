@@ -5,8 +5,8 @@
         <input type="hidden" name="id" value="<?= $usuario['id'] ?>">
         <div class="row">
             <div class="col-md-4 form-group">
-                <label for="rol_id">Rol :</label>
-                <select name="rol_id" id="rol_id" class="form-control">
+                <label for="rol">Rol :</label>
+                <select name="rol" id="rol" class="form-control">
                     <?php foreach ($roles as $rol): ?>
                         <option value="<?= $rol['id'] ?>" <?php if ($rol['id'] == $usuario['rol_id']) { echo "selected"; } ?>><?= htmlspecialchars($rol['nombre']) ?></option>
                     <?php endforeach; ?>
@@ -29,8 +29,8 @@
                 <input type="text" class="form-control" name="telefono" id="telefono" maxlength="20" value="<?= htmlspecialchars($usuario['telefono'] ?? '') ?>">
             </div>
             <div class="col-md-3 form-group">
-                <label for="activo">Estado :</label>
-                <select name="activo" id="activo" class="form-control">
+                <label for="estado">Estado :</label>
+                <select name="estado" id="estado" class="form-control">
                     <option value="1" <?php if ($usuario['activo'] == 1) { echo "selected"; } ?>>Activo</option>
                     <option value="0" <?php if ($usuario['activo'] == 0) { echo "selected"; } ?>>Inactivo</option>
                 </select>
@@ -52,3 +52,4 @@
     </form>
 </div>
 <?php require __DIR__ . '/../../layouts/footer.php'; ?>
+

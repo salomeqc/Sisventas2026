@@ -4,34 +4,34 @@
     <form action="<?= BASE_URL ?>/admin/usuarios/guardar" method="POST">
         <div class="row">
             <div class="col-md-4 form-group">
-                <label for="rol_id">Rol :</label>
-                <select name="rol_id" id="rol_id" class="form-control" required>
+                <label for="rol">Rol :</label>
+                <select name="rol" id="rol" class="form-control" required>
                     <?php foreach ($roles as $rol): ?>
-                        <option value="<?= $rol['id'] ?>" <?= (isset($usuario['rol_id']) && $usuario['rol_id'] == $rol['id']) ? 'selected' : '' ?>><?= htmlspecialchars($rol['nombre']) ?></option>
+                        <option value="<?= $rol['id'] ?>"><?= htmlspecialchars($rol['nombre']) ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
             <div class="col-md-4 form-group">
                 <label for="nombre">Nombre :</label>
-                <input type="text" name="nombre" id="nombre" class="form-control" maxlength="40" value="<?= htmlspecialchars($usuario['nombre'] ?? '') ?>" required>
+                <input type="text" name="nombre" id="nombre" class="form-control" maxlength="40" required>
             </div>
             <div class="col-md-4 form-group">
                 <label for="apellidos">Apellidos :</label>
-                <input type="text" name="apellidos" id="apellidos" class="form-control" maxlength="80" value="<?= htmlspecialchars($usuario['apellidos'] ?? '') ?>" required>
+                <input type="text" name="apellidos" id="apellidos" class="form-control" maxlength="80" required>
             </div>
             <div class="col-md-5 form-group">
                 <label for="email">Email :</label>
-                <input type="email" name="email" id="email" class="form-control" maxlength="150" value="<?= htmlspecialchars($usuario['email'] ?? '') ?>" required>
+                <input type="email" name="email" id="email" class="form-control" maxlength="150" required>
             </div>
             <div class="col-md-4 form-group">
                 <label for="telefono">Teléfono :</label>
-                <input type="text" name="telefono" id="telefono" class="form-control" maxlength="20" value="<?= htmlspecialchars($usuario['telefono'] ?? '') ?>">
+                <input type="text" name="telefono" id="telefono" class="form-control" maxlength="20">
             </div>
             <div class="col-md-3 form-group">
-                <label for="activo">Estado :</label>
-                <select name="activo" id="activo" class="form-control">
-                    <option value="1" <?= (!isset($usuario['activo']) || $usuario['activo'] == 1) ? 'selected' : '' ?>>Activo</option>
-                    <option value="0" <?= (isset($usuario['activo']) && $usuario['activo'] == 0) ? 'selected' : '' ?>>Inactivo</option>
+                <label for="estado">Estado :</label>
+                <select name="estado" id="estado" class="form-control">
+                    <option value="1">Activo</option>
+                    <option value="0">Inactivo</option>
                 </select>
             </div>
             <div class="col-md-6 form-group">
@@ -51,3 +51,4 @@
     </form>
 </div>
 <?php require __DIR__ . '/../../layouts/footer.php'; ?>
+

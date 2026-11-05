@@ -2,7 +2,24 @@
 <div class="card p-2">
     <h3>Lista de Usuarios</h3>
     <br>
-    <a href="<?= BASE_URL ?>/admin/usuarios/nuevo" class="btn btn-success col-2"> + Nuevo </a>
+    <div class="row m-1">
+        <div class="col-md-2">
+            <a href="<?= BASE_URL ?>/admin/usuarios/nuevo" class="btn btn-success btn-block"> + Nuevo </a>
+        </div>
+        <div class="col-md-5">
+            <form action="<?= BASE_URL ?>/admin/usuarios" method="GET">
+                <div class="input-group">
+                    <input type="text" name="buscar" class="form-control" placeholder="Buscar..." value="<?= htmlspecialchars($criterio ?? '') ?>">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-primary" type="submit"><i class="fa fa-search"></i> Buscar</button>
+                        <?php if (!empty($criterio)): ?>
+                            <a href="<?= BASE_URL ?>/admin/usuarios" class="btn btn-outline-secondary" title="Limpiar"><i class="fa fa-times"></i></a>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
     <table class="table-bordered m-3">
         <thead>
             <tr>
@@ -19,8 +36,9 @@
         <tbody>
             <?php 
             $contador = 0;
-            foreach ($usuarios as $usuario) {
-                $contador += 1;
+            if (!empty($usuarios)) {
+                foreach ($usuarios as $usuario) {
+                    $contador += 1;
             ?>
             <tr>
                 <td><?php echo $contador; ?></td>
@@ -36,8 +54,16 @@
                     <a class="btn btn-outline-danger" title="Eliminar" href="<?= BASE_URL ?>/admin/usuarios/eliminar/<?= $usuario['id'] ?>" onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?');" data-sigi-confirm><i class="fa fa-trash"></i></a>
                 </td>
             </tr>
+            <?php 
+                }
+            } else {
+            ?>
+            <tr>
+                <td colspan="8" class="text-center p-3">No se encontraron usuarios registrados.</td>
+            </tr>
             <?php } ?>
         </tbody>
     </table>
 </div>
 <?php require __DIR__ . '/../../layouts/footer.php'; ?>
+
